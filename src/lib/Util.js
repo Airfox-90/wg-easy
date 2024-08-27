@@ -17,6 +17,18 @@ module.exports = class Util {
     return true;
   }
 
+  static isValidCIDR(str) {
+    const blocks = str.split('/');
+    if (blocks.length !== 2) return false;
+    if (!this.isValidIPv4(blocks[0])) return false;
+
+    let value = parseInt(blocks[1], 10);
+    if (Number.isNaN(value)) return false;
+    if (value < 0 || value > 32) return false;
+
+    return true;
+  }
+
   static promisify(fn) {
     // eslint-disable-next-line func-names
     return function(req, res) {

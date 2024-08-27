@@ -117,11 +117,11 @@ class API {
     })));
   }
 
-  async createClient({ name, expiredDate }) {
+  async createClient({ name, subnet, expiredDate }) {
     return this.call({
       method: 'post',
       path: '/wireguard/client',
-      body: { name, expiredDate },
+      body: { name, subnet, expiredDate },
     });
   }
 
@@ -169,6 +169,14 @@ class API {
     });
   }
 
+  async updateClientSubnet({ clientId, subnet }) {
+    return this.call({
+      method: 'put',
+      path: `/wireguard/client/${clientId}/subnet/`,
+      body: { subnet },
+    });
+  }
+  
   async updateClientExpireDate({ clientId, expireDate }) {
     return this.call({
       method: 'put',

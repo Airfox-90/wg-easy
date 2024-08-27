@@ -77,11 +77,14 @@ new Vue({
     clientDelete: null,
     clientCreate: null,
     clientCreateName: '',
+    clientCreateSubnet: '',
     clientExpiredDate: '',
     clientEditName: null,
     clientEditNameId: null,
     clientEditAddress: null,
     clientEditAddressId: null,
+    clientEditSubnet: null,
+    clientEditSubnetId: null,
     clientEditExpireDate: null,
     clientEditExpireDateId: null,
     qrcode: null,
@@ -300,10 +303,11 @@ new Vue({
     },
     createClient() {
       const name = this.clientCreateName;
+      const subnet = this.clientCreateSubnet;
       const expiredDate = this.clientExpiredDate;
       if (!name) return;
 
-      this.api.createClient({ name, expiredDate })
+      this.api.createClient({ name, subnet, expiredDate })
         .catch((err) => alert(err.message || err.toString()))
         .finally(() => this.refresh().catch(console.error));
     },
@@ -334,6 +338,11 @@ new Vue({
     },
     updateClientAddress(client, address) {
       this.api.updateClientAddress({ clientId: client.id, address })
+        .catch((err) => alert(err.message || err.toString()))
+        .finally(() => this.refresh().catch(console.error));
+    },
+    updateClientSubnet(client, subnet) {
+      this.api.updateClientSubnet({ clientId: client.id, subnet })
         .catch((err) => alert(err.message || err.toString()))
         .finally(() => this.refresh().catch(console.error));
     },

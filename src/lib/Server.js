@@ -245,8 +245,9 @@ module.exports = class Server {
       }))
       .post('/api/wireguard/client', defineEventHandler(async (event) => {
         const { name } = await readBody(event);
+        const { subnet } = await readBody(event);
         const { expiredDate } = await readBody(event);
-        await WireGuard.createClient({ name, expiredDate });
+        await WireGuard.createClient({ name, subnet, expiredDate });
         return { success: true };
       }))
       .delete('/api/wireguard/client/:clientId', defineEventHandler(async (event) => {
@@ -300,6 +301,15 @@ module.exports = class Server {
         }
         const { address } = await readBody(event);
         await WireGuard.updateClientAddress({ clientId, address });
+        return { success: true };
+      }))
+      .put('/api/wireguard/client/:clientId/subnet', defineEventHandler(async (event) => {
+        const clientId = getRouterParam(event, 'clientId');
+        if (clientId === '__proto__' || clientId === 'constructor' || clientId === 'prototype') {
+          throw createError({ status: 403 });
+        }
+        const { subnet } = await readBody(event);
+        await WireGuard.updateClientSubnet({ clientId, subnet });
         return { success: true };
       }))
       .put('/api/wireguard/client/:clientId/expireDate', defineEventHandler(async (event) => {

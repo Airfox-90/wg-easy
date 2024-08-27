@@ -120,7 +120,7 @@ PostDown = ${WG_POST_DOWN}
 [Peer]
 PublicKey = ${client.publicKey}
 ${client.preSharedKey ? `PresharedKey = ${client.preSharedKey}\n` : ''
-}AllowedIPs = ${client.address}/32`;
+}AllowedIPs = ${client.address}/32${client.subnet ? `,${client.subnet}`: ''}`;
     }
 
     debug('Config saving...');
@@ -146,6 +146,7 @@ ${client.preSharedKey ? `PresharedKey = ${client.preSharedKey}\n` : ''
       name: client.name,
       enabled: client.enabled,
       address: client.address,
+      subnet: client.subnet,
       publicKey: client.publicKey,
       createdAt: new Date(client.createdAt),
       updatedAt: new Date(client.updatedAt),
@@ -235,7 +236,7 @@ Endpoint = ${WG_HOST}:${WG_CONFIG_PORT}`;
     });
   }
 
-  async createClient({ name, expiredDate }) {
+  async  createClient({ name, subnet, expiredDate }) {
     if (!name) {
       throw new Error('Missing: Name');
     }
@@ -270,6 +271,7 @@ Endpoint = ${WG_HOST}:${WG_CONFIG_PORT}`;
       id,
       name,
       address,
+      subnet,
       privateKey,
       publicKey,
       preSharedKey,
@@ -353,6 +355,19 @@ Endpoint = ${WG_HOST}:${WG_CONFIG_PORT}`;
     }
 
     client.address = address;
+    client.updatedAt = new Date();
+
+    await this.saveConfig();
+  }
+
+  async updateClientSubnet({ clientId, subnet }) {
+    const client = await this.getClient({ clientId });
+
+    if (!Util.isValidCIDR(subnet)) {
+      throw new ServerError(`Invalid Subnet: ${subnet}`, 400);
+    }
+
+    client.subnet = subnet;
     client.updatedAt = new Date();
 
     await this.saveConfig();
