@@ -234,7 +234,7 @@
                         </div>
                         <!-- Subnet -->
                         <div class=" block md:inline-block pb-1 md:pb-0 text-gray-500 dark:text-neutral-400 text-xs">
-                          <span class="group">
+                          <span v-if="client.subnet" class="group">
                             <!-- Show -->
                             <span class="inline-block ">Subnet: </span>
                             <input v-show="clientEditSubnetId === client.id" v-model="clientEditSubnet"
@@ -262,7 +262,6 @@
                       <div class=" block md:inline-block pb-1 md:pb-0 text-gray-500 dark:text-neutral-400 text-xs">
                         <!-- Inline Transfer TX -->
                         <span v-if="!uiTrafficStats && client.transferTx" class="whitespace-nowrap" :title="$t('totalDownload') + bytes(client.transferTx)">
-                          ·
                           <svg class="align-middle h-3 inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd"
                               d="M16.707 10.293a1 1 0 010 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l4.293-4.293a1 1 0 011.414 0z"
