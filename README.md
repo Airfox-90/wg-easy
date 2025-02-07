@@ -1,10 +1,8 @@
 # WireGuard Easy
 
-[![Build & Publish Docker Image to Docker Hub](https://github.com/wg-easy/wg-easy/actions/workflows/deploy.yml/badge.svg?branch=production)](https://github.com/wg-easy/wg-easy/actions/workflows/deploy.yml)
-[![Lint](https://github.com/wg-easy/wg-easy/actions/workflows/lint.yml/badge.svg?branch=master)](https://github.com/wg-easy/wg-easy/actions/workflows/lint.yml)
-![Docker](https://img.shields.io/docker/pulls/weejewel/wg-easy.svg)
-[![Sponsor](https://img.shields.io/github/sponsors/weejewel)](https://github.com/sponsors/WeeJeWel)
-![GitHub Stars](https://img.shields.io/github/stars/wg-easy/wg-easy)
+[![Build & Publish Docker Image to Docker Hub](https://github.com/airfox-90/wg-easy/actions/workflows/deploy-nightly.yml/badge.svg?branch=master)](https://github.com/airfox-90/wg-easy/actions/workflows/deploy-nightly.yml)
+[![Lint](https://github.com/airfox-90/wg-easy/actions/workflows/lint.yml/badge.svg?branch=master)](https://github.com/airfox-90/wg-easy/actions/workflows/lint.yml)
+![GitHub Stars](https://img.shields.io/github/stars/airfox-90/wg-easy)
 
 You have found the easiest way to install & manage WireGuard on any Linux host!
 This is a fork of the original wg-easy repo with just one single but important addition:
@@ -40,18 +38,13 @@ In client configuration you can add a client side subnet. There are routing entr
 
 ## Versions
 
-> 💡 For the **stable** version please read instructions on the
-> [**production** branch](https://github.com/wg-easy/wg-easy/tree/production)!
-
-We provide more than 1 docker image tag, the following will help you decide
-which one suites the best for you.
+I provide more exactly 1 docker image tag, the following will help you decide
+if it suites the good for you.
 
 | tag | Branch | Example | Description |
 | - | - | - | - |
-| `latest` | [`production`](https://github.com/wg-easy/wg-easy/tree/production) | `ghcr.io/wg-easy/wg-easy:latest` or `ghcr.io/wg-easy/wg-easy` | stable as possbile get bug fixes quickly when needed, deployed against [`production`](https://github.com/wg-easy/wg-easy/tree/production). |
-| `14` | [`production`](https://github.com/wg-easy/wg-easy/tree/production) | `ghcr.io/wg-easy/wg-easy:14` | same as latest, stick to a version tag. |
-| `nightly` | [`master`](https://github.com/wg-easy/wg-easy/tree/master) | `ghcr.io/wg-easy/wg-easy:nightly` | mostly unstable gets frequent package and code updates, deployed against [`master`](https://github.com/wg-easy/wg-easy/tree/master). |
-| `development` | pull requests | `ghcr.io/wg-easy/wg-easy:development` | used for development, testing code from PRs before landing into [`master`](https://github.com/wg-easy/wg-easy/tree/master). |
+| `latest` | [`master`](https://github.com/airfox-90/wg-easy/tree/master) | `ghcr.io/airfox-90/wg-easy:latest` or `ghcr.io/airfox-90/wg-easy` | stable as possbile get bug fixes quickly when needed, deployed against [`master`](https://github.com/wg-easy/wg-easy/tree/master). |
+
 
 ## Installation
 
