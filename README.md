@@ -87,7 +87,7 @@ docker run --detach \
   --sysctl 'net.ipv4.conf.all.src_valid_mark=1' \
   --sysctl 'net.ipv4.ip_forward=1' \
   --restart unless-stopped \
-  ghcr.io/wg-easy/wg-easy
+  ghcr.io/airfox-90/wg-easy
 ```
 
 > 💡 Replace `<🚨YOUR_SERVER_IP>` with your WAN IP, or a Dynamic DNS hostname.
@@ -150,7 +150,7 @@ To update to the latest version, simply run:
 ```shell
 docker stop wg-easy
 docker rm wg-easy
-docker pull ghcr.io/wg-easy/wg-easy
+docker pull ghcr.io/airfox-90/wg-easy
 ```
 
 And then run the `docker run -d \ ...` command above again.
