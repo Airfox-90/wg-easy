@@ -7,6 +7,9 @@
 ![GitHub Stars](https://img.shields.io/github/stars/wg-easy/wg-easy)
 
 You have found the easiest way to install & manage WireGuard on any Linux host!
+This is a fork of the original wg-easy repo with just one single but important addition:
+It is site to site enabled.
+In client configuration you can add a client side subnet. There are routing entries added automatically to rout IP traffic to the subnet via the client tunnel IP.
 
 <p align="center">
   <img src="./assets/screenshot.png" width="802" />
@@ -28,6 +31,7 @@ You have found the easiest way to install & manage WireGuard on any Linux host!
 * One Time Links (default off)
 * Client Expiry (default off)
 * Prometheus metrics support
+* Site to Site support
 
 ## Requirements
 
